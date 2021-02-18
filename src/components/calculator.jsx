@@ -11,7 +11,6 @@ const Calculator = (props) => {
 
     return (
         <div className="calculator-container">
-            <h1 className="main-title">Loan Calculator</h1>
             <div className="form-container">
                 <form className="calculator-form">
                     <label className="calculator-label">
@@ -19,9 +18,9 @@ const Calculator = (props) => {
                         <input type="number"
                             value={amount}
                             onChange={(e) => setAmount(e.target.value)}
-                            className="calculator-input"
+                            className="calculator-input amount-input"
                         />
-                        <span>&#36;</span>
+                        <span className="dollar-sign">&#36;</span>
                     </label>
                     <label className="calculator-label">
                         <h2 className="calculator-title">Loan Term in Years</h2>
@@ -32,7 +31,7 @@ const Calculator = (props) => {
                             className="calculator-input"
                         />
                     </label>
-                    <h2>Or</h2>
+                    <h2 className="calculator-title">Or</h2>
                     <label className="calculator-label">
                         <h2 className="calculator-title">Loan Term in Months</h2>
                         <input type="number" 
@@ -47,9 +46,9 @@ const Calculator = (props) => {
                         <input type="number" 
                             value={rate}
                             onChange={(e) => setRate(e.target.value)}
-                            className="calculator-input"
+                            className="calculator-input rate-input"
                         />
-                        <span>&#37;</span>
+                        <span className="percent-sign">&#37;</span>
                     </label>
                     <input type="submit" 
                         value="Calculate"
@@ -57,16 +56,18 @@ const Calculator = (props) => {
                         />
                 </form>
             </div>
-            <div>
-                <h1>Monthly Payments</h1>
-                <h2><span>&#36;</span> {(total).toFixed(2)}</h2>
-                <div>
-                    <p>Total Principal Paid</p>
-                    <p><span>&#36;</span> {Math.round(amount)}</p>
+            <div className="results-container">
+                <div className="monthly-container">
+                    <h1 className="monthly-header">Monthly Payments</h1>
+                    <h2 className="monthly-amount">&#36; {(total).toFixed(2)}</h2>
                 </div>
-                <div>
-                    <p>Total Interest Paid</p>
-                    <p><span>&#36;</span> {((total * months) - amount).toFixed(2)}</p>
+                <div className="principal-container">
+                    <p className="principal-header">Total Principal Paid</p>
+                    <p className="principal-amount">&#36; {Math.round(amount)}</p>
+                </div>
+                <div className="interest-container">
+                    <p className="interest-header">Total Interest Paid</p>
+                    <p className="interest-amount">&#36; {((total * months) - amount).toFixed(2)}</p>
                 </div>
             </div>
         </div>
