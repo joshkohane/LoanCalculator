@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Results from './results'
+import Results from './results';
 
 const Calculator = (props) => {
     const [amount, setAmount] = useState(5000);
