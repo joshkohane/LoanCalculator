@@ -19,22 +19,23 @@
 
 .calculator-container {
   box-sizing: border-box;
+  border-radius: 20px;
   width: 700px;
   height: 500px;
   display: flex;
 }
 
+.calculator-container:hover {
+  box-shadow: 0px 0px 7px 5px #5f6366;
+  transition: all 0.2s ease-in-out;
+}
+
 .form-container {
   background-color: #484c4e;
   width: 40%;
-  padding: 30px 20px;
+  padding: 10px 20px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-}
-
-.form-container:hover {
-  border: 1px solid #f9f9f9;
-  padding: 29px 19px;
 }
 
 .calculator-label {
@@ -42,8 +43,8 @@
 }
 
 .calculator-title {
-  padding: 10px 0;
-  font-size: 16px;
+  padding: 20px 0 0px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: .5px;
   color: #8e8e8e;
@@ -51,7 +52,7 @@
 
 .calculator-input,
 .calculator-input-invalid {
-  padding: 10px 5px;
+  padding: 7px 5px 10px;
   border-bottom: 2px solid #f9f9f9;
   text-align: center;
   width: 100%;
@@ -86,6 +87,7 @@
 
 .calculator-or {
   text-align: center;
+  /* padding: 15px 0 0px; */
 }
 
 .calculate-btn,
@@ -93,15 +95,18 @@
   box-sizing: border-box;
   padding: 10px 15px;
   border: 1px solid #b64fc8;
-  margin-left: calc(50% - 45px);
-  margin-top: 20px;
+  margin-left: calc(50% - 64px);
+  margin-top: 30px;
   background-color: #b64fc8;
   cursor: pointer;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
 }
 
 .calculate-btn:hover {
   box-shadow: 0px 0px 3px 2px #903d9e;
-  background-color: #b64fc8;
+  background-color: #b335c9;
   transition: all 0.5s ease-in-out;
 }
 
@@ -134,9 +139,12 @@ input[type=number] {
   border-bottom-right-radius: 20px;
 }
 
-.results-container:hover {
-  padding: 29px 19px;
-  border: 1px solid #f8f8f9;
+.principal-container {
+  padding-top: 30px;
+}
+
+.monthly-container {
+  position: relative;
 }
 
 .monthly-header,
@@ -145,7 +153,7 @@ input[type=number] {
   margin: 10px 0;
   font-size: 20px;
   font-weight: 700;
-  letter-spacing: .5px;
+  letter-spacing: 1px;
 }
 
 .monthly-header {
@@ -161,5 +169,13 @@ input[type=number] {
 }
 
 .monthly-amount {
-  font-size: 20px;
+  font-size: 70px;
+  color: #0fc0ae;
+}
+
+.monthly-dollar-sign {
+  position: absolute;
+  bottom: 30px;
+  left: 12px;
+  font-size: 25px;
 }
