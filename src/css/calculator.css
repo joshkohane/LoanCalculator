@@ -1,10 +1,12 @@
 .app-container {
-  background-color: #2651a8;
+  background-color: #202225;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'PT Serif', serif;
+  color: #f9f9f9;
 }
 
 .main-title {
@@ -17,16 +19,29 @@
   width: 700px;
   height: 500px;
   display: flex;
-  border: 3px solid black;
+  border: 0px solid #bbbfc3;
   border-radius: 20px;
-  background-color: white;
-  box-shadow: 0px 0px 5px 3px #0a2760;
+  /* box-shadow: 0px 0px 5px 3px #4b4a4a; */
 }
 
+/* .calculator-container:hover { */
+  /* box-shadow: 0px 0px 5px 3px #4b4a4a;
+  transition: all 0.3s ease-in-out; */
+/* } */
+
 .form-container {
-  box-sizing: border-box;
+  background-color: #606368;
+  /* box-sizing: border-box; */
   width: 40%;
   padding: 30px 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.form-container:hover {
+  border: 1px solid #f9f9f9;
+  /* transition: all 0.3s ease-in-out; */
+  padding: 29px 19px;
 }
 
 .calculator-label {
@@ -38,17 +53,31 @@
   font-size: 16px;
   font-weight: 700;
   letter-spacing: .5px;
+  /* color: #f8f8f9; */
 }
 
-.calculator-input {
+.calculator-input,
+.calculator-input-invalid {
   padding: 10px 5px;
-  border: 1px solid black;
+  border-bottom: 2px solid #f9f9f9;
+  text-align: center;
+  /* color: #f8f8f9; */
   width: 100%;
 }
 
-.amount-input {
-  padding: 10px 5px 10px 25px;
+.calculator-input-invalid {
+  border-bottom: 2px solid red;
+  color: red;
 }
+
+.calculator-input:focus {
+  border-bottom: 2px solid #b64fc8;
+  transition: all 0.3s ease-in-out;
+}
+
+/* .amount-input {
+  padding: 10px 5px 10px 25px;
+} */
 
 .dollar-sign,
 .percent-sign {
@@ -65,19 +94,29 @@
   right: 7px;
 }
 
-.calculate-btn {
+.calculator-or {
+  text-align: center;
+}
+
+.calculate-btn,
+.calculate-btn-inactive {
   box-sizing: border-box;
   padding: 10px 15px;
-  border: 1px solid #0c204a;
+  border: 1px solid #b64fc8;
   margin-left: calc(50% - 45px);
   margin-top: 20px;
-  color: white;
-  background-color: #2651a8;
+  background-color: #ea80fb;
+  cursor: pointer;
 }
 
 .calculate-btn:hover {
-  box-shadow: 0px 0px 3px 2px #0a2760;
-  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 0px 3px 2px #903d9e;
+  background-color: #b64fc8;
+  transition: all 0.5s ease-in-out;
+}
+
+.calculate-btn-inactive {
+  cursor: not-allowed;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -99,6 +138,14 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #3c4042;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.results-container:hover {
+  padding: 29px 19px;
+  border: 1px solid #f8f8f9;
 }
 
 .monthly-header,

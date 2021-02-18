@@ -1,13 +1,77 @@
 import React, { useState } from 'react';
+import Results from './results'
 
 const Calculator = (props) => {
     const [amount, setAmount] = useState(5000);
+    const [amountClass, setAmountClass] = useState("calculator-input");
     const [years, setYears] = useState(5);
+    const [yearsClass, setYearsClass] = useState("calculator-input");
     const [months, setMonths] = useState(60);
+    const [monthsClass, setMonthsClass] = useState("calculator-input");
     const [rate, setRate] = useState(4.5);
-    const interestPerMonth = (rate / 100) / 12;
-    const calcInterest = (1 + interestPerMonth) ** months;
-    const total = amount / ((calcInterest - 1) / (interestPerMonth * calcInterest));
+    const [rateClass, setRateClass] = useState("calculator-input");
+    const [results, setResults] = useState(<Results rate={rate} amount={amount} months={months} />)
+    const submit = amountClass === "calculator-input" 
+        && yearsClass === "calculator-input" 
+        && monthsClass === "calculator-input" 
+        && rateClass === "calculator-input"
+
+    function handleAmount(e) {
+        let currAmount = e.target.value;
+        if (e.target.value === '' || e.target.value < 1000 || e.target.value > 1000000) {
+            setAmount(currAmount);
+            setAmountClass("calculator-input-invalid")
+        } else {
+            setAmount(currAmount);
+            setAmountClass("calculator-input")
+        }
+    }
+
+    function handleYears(e) {
+        let currYears = e.target.value;
+        if (e.target.value === '' || e.target.value === 0) {
+            setYears(currYears);
+            setMonths(0);
+            setYearsClass("calculator-input-invalid")
+            setMonthsClass("calculator-input-invalid")
+        } else if (e.target.value.length <= 2) {
+            setYears(currYears);
+            setMonths(currYears * 12);
+            setYearsClass("calculator-input")
+            setMonthsClass("calculator-input")
+        }
+    }
+
+    function handleMonths(e) {
+        let currMonths = e.target.value;
+        if (e.target.value === '' || e.target.value === 0) {
+            setMonths(currMonths);
+            setYears(0);
+            setMonthsClass("calculator-input-invalid")
+            setYearsClass("calculator-input-invalid")
+        } else if (e.target.value.length <= 3) {
+            setMonths(currMonths);
+            setYears(currMonths / 12);
+            setYearsClass("calculator-input")
+            setMonthsClass("calculator-input")
+        }
+    }
+
+    function handleRate(e) {
+        let currRate = e.target.value;
+        if (e.target.value === '' || e.target.value === 0 || e.target.value > 99) {
+            setRate(currRate);
+            setRateClass("calculator-input-invalid")
+        } else {
+            setRate(currRate);            
+            setRateClass("calculator-input")
+        }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        setResults(<Results rate={rate} amount={amount} months={months} />)
+    }
 
     return (
         <div className="calculator-container">
@@ -17,8 +81,8 @@ const Calculator = (props) => {
                         <h2 className="calculator-title">Loan Amount</h2>
                         <input type="number"
                             value={amount}
-                            onChange={(e) => setAmount(e.target.value)}
-                            className="calculator-input amount-input"
+                            onChange={handleAmount}
+                            className={amountClass}
                         />
                         <span className="dollar-sign">&#36;</span>
                     </label>
@@ -26,50 +90,45 @@ const Calculator = (props) => {
                         <h2 className="calculator-title">Loan Term in Years</h2>
                         <input type="number" 
                             value={years}
-                            maxLength="2"
-                            onChange={(e) => setYears(e.target.value)}
-                            className="calculator-input"
+                            onChange={handleYears}
+                            className={yearsClass}
                         />
                     </label>
-                    <h2 className="calculator-title">Or</h2>
+                    <h2 className="calculator-title calculator-or">Or</h2>
                     <label className="calculator-label">
                         <h2 className="calculator-title">Loan Term in Months</h2>
                         <input type="number" 
                             value={months}
-                            maxLength="3"
-                            onChange={(e) => setMonths(e.target.value)}
-                            className="calculator-input"
+                            onChange={handleMonths}
+                            className={monthsClass}
                         />
                     </label>
                     <label className="calculator-label">
                         <h2 className="calculator-title">Interest Rate Per Year</h2>
                         <input type="number" 
                             value={rate}
-                            onChange={(e) => setRate(e.target.value)}
-                            className="calculator-input rate-input"
+                            onChange={handleRate}
+                            className={rateClass}
                         />
                         <span className="percent-sign">&#37;</span>
                     </label>
-                    <input type="submit" 
-                        value="Calculate"
-                        className={amount >= 1000 ? 'calculate-btn' : 'calculate-btn-inactive'}
+                    {submit ? 
+                        <input type="submit"
+                            value="Calculate"
+                            className="calculate-btn"
+                            onClick={handleSubmit}
                         />
+                    :
+                        <input type="submit" 
+                            disabled
+                            value="Calculate"
+                            className="calculate-btn-inactive"
+                            onClick={handleSubmit}
+                            />
+                    }
                 </form>
             </div>
-            <div className="results-container">
-                <div className="monthly-container">
-                    <h1 className="monthly-header">Monthly Payments</h1>
-                    <h2 className="monthly-amount">&#36; {(total).toFixed(2)}</h2>
-                </div>
-                <div className="principal-container">
-                    <p className="principal-header">Total Principal Paid</p>
-                    <p className="principal-amount">&#36; {Math.round(amount)}</p>
-                </div>
-                <div className="interest-container">
-                    <p className="interest-header">Total Interest Paid</p>
-                    <p className="interest-amount">&#36; {((total * months) - amount).toFixed(2)}</p>
-                </div>
-            </div>
+            {results}
         </div>
     )
 }
