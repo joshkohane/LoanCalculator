@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Results from './results';
 
-const Calculator = (props) => {
+const Calculator = () => {
     const [amount, setAmount] = useState(5000);
     const [amountClass, setAmountClass] = useState("calculator-input");
     const [amountErrors, setAmountErrors] = useState("");
