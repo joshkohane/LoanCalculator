@@ -9,8 +9,8 @@ const Results = ({rate, amount, months}) => {
         <div className="results-container">
             <div className="monthly-container">
                 <h1 className="monthly-header">Monthly Payments</h1>
-                <h2 className="monthly-amount"><span>{(total).toFixed(2)}</span></h2>
-                <span className="monthly-dollar-sign">&#36;</span>
+                <h2 className="monthly-amount"><span className="monthly-dollar-sign">&#36;</span>{(total).toFixed(2)}</h2>
+                
             </div>
             <div className="principal-container">
                 <p className="principal-header">Total Principal Paid</p>
