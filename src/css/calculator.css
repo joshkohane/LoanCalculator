@@ -112,6 +112,8 @@
 
 .calculate-btn-inactive {
   cursor: not-allowed;
+  background-color: #8e8e8e;
+  border-color: #8e8e8e;
 }
 
 /* Chrome, Safari, Edge, Opera */
