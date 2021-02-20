@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-top: 70px; */
   font-family: 'Zilla Slab', serif;
   color: #e2e2e2;
 }
@@ -24,7 +23,7 @@
 }
 
 .calculator-container:hover {
-  box-shadow: 0px 0px 7px 5px #5f6366;
+  box-shadow: 0px 0px 7px 5px #242424;
   transition: all 0.2s ease-in-out;
 }
 
@@ -92,12 +91,10 @@
 .errors {
   color: red;
   position: absolute;
-  
 }
 
 .calculate-btn,
 .calculate-btn-inactive {
-  box-sizing: border-box;
   padding: 10px 15px;
   border: 1px solid #b64fc8;
   margin-left: calc(50% - 64px);
@@ -112,7 +109,7 @@
 .calculate-btn:hover {
   box-shadow: 0px 0px 3px 2px #903d9e;
   background-color: #b335c9;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .calculate-btn-inactive {
@@ -134,7 +131,6 @@ input[type=number] {
 }
 
 .results-container {
-  box-sizing: border-box;
   width: 420px;
   height: 500px;
   padding: 30px 20px;
@@ -161,6 +157,7 @@ input[type=number] {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .monthly-header {
@@ -197,7 +194,6 @@ input[type=number] {
   }
 
   .calculator-container {
-    display: flex;
     flex-direction: column;
     align-items: center;
   }

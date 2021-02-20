@@ -35,7 +35,6 @@ const Calculator = () => {
 
     function handleYears(e) {
         let currYears = e.target.value;
-        console.log(typeof currYears)
         if (currYears === "" || currYears === "0") {
             setYears(currYears);
             setMonths(0);
